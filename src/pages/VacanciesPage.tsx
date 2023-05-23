@@ -9,8 +9,11 @@ import { Filters } from '../components/Filters';
 import { SearchInput } from '../components/SearchInput';
 import { VacanciesList } from '../components/VacanciesList';
 import { VacanciesPagination } from '../components/VacanciesPagination';
+import { useDocumentTitle } from '@mantine/hooks';
 
 export const VacanciesPage = () => {
+  useDocumentTitle('Jobored | Vacancies');
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [params, setParams] = useState<Partial<VacanciesSearchParams>>(() =>
     getCurrentParams(searchParams)

@@ -9,8 +9,11 @@ import {
 } from '@mantine/core';
 import { ReactComponent as Image404 } from '../assets/images/404.svg';
 import { Link } from 'react-router-dom';
+import { useDocumentTitle } from '@mantine/hooks';
 
 export function NotFoundPage() {
+  useDocumentTitle('Jobored | Not Found');
+
   const { classes } = useStyles();
 
   return (

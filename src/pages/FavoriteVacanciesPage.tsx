@@ -6,8 +6,11 @@ import { VacanciesPagination } from '../components/VacanciesPagination';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useFavoriteVacanciesStore } from '../store/favoriteVacancies';
 import { Empty } from '../components/Empty';
+import { useDocumentTitle } from '@mantine/hooks';
 
 export const FavoriteVacanciesPage = () => {
+  useDocumentTitle('Jobored | Favorites');
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { data, isLoading, isError, isFetching } =

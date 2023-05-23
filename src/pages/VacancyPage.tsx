@@ -5,12 +5,16 @@ import { Box, Center, Loader } from '@mantine/core';
 
 import { VacancyDescriptionBody } from '../components/VacancyDescriptionBody';
 import { VacancyDescriptionHeader } from '../components/VacancyDescriptionHeader';
+import { useDocumentTitle } from '@mantine/hooks';
 
 export const VacancyPage = () => {
   const { vacancyId } = useParams();
+
   const { data, isLoading, isError, isFetching } = VacanciesApi.useVacancy(
     Number(vacancyId)
   );
+
+  useDocumentTitle(`Jobored | ${data ? data?.profession : 'Profession'}`);
 
   if (isLoading) {
     return (
