@@ -4,6 +4,6 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/startup-summer-2023/',
+  base: '/',
   plugins: [react(), svgr()],
 });
