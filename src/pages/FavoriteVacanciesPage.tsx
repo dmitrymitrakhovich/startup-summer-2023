@@ -1,10 +1,11 @@
-import { Box, Center, Flex, Loader } from '@mantine/core';
+import { Box, Button, Center, Flex, Loader, Title } from '@mantine/core';
 import { VacanciesApi } from '../hooks/vacancies.hooks';
 import { ServerError } from '../components/ServerError';
 import { VacanciesList } from '../components/VacanciesList';
 import { VacanciesPagination } from '../components/VacanciesPagination';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useFavoriteVacanciesStore } from '../store/favoriteVacancies';
+import { Empty } from '../components/Empty';
 
 export const FavoriteVacanciesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,7 +18,15 @@ export const FavoriteVacanciesPage = () => {
   );
 
   if (!favoriteVacancies.length) {
-    return <Box>123</Box>;
+    return (
+      <Flex h='100%' direction='column' align='center'>
+        <Empty />
+        <Title>Упс, здесь еще ничего нет!</Title>
+        <Button variant='light' size='lg' component={Link} to='/'>
+          Поиск Вакансий
+        </Button>
+      </Flex>
+    );
   }
 
   if (isLoading) {

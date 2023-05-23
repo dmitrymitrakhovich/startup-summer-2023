@@ -13,7 +13,6 @@ export const VacanciesPagination = ({
   setSearchParams,
   total,
 }: VacanciesPaginationProps) => {
-  console.log(total);
   return (
     <Center>
       <Pagination

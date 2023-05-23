@@ -68,7 +68,7 @@ export const VacancyCard = ({
 
         <Group>
           <IconLocation />
-          <Skeleton visible={isFetching} width={200}>
+          <Skeleton visible={isFetching} width={300}>
             {townName}
           </Skeleton>
         </Group>

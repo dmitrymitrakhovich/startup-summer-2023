@@ -24,7 +24,6 @@ async function getFavoriteVacancies(page: string, ids: string) {
 
 export const VacanciesApi = {
   useVacancies: (searchParams: URLSearchParams) => {
-    searchParams.set('count', String(4));
     return useQuery(
       ['vacancies', searchParams.get('page')],
       () => getVacancies(searchParams),

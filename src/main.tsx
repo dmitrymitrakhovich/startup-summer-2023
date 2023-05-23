@@ -39,24 +39,14 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: '/startup-summer-2023',
+    basename: import.meta.env.DEV ? '/' : '/startup-summer-2023',
   }
 );
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          globalStyles: (theme) => ({
-            body: {
-              backgroundColor: theme.colors.gray[1],
-            },
-          }),
-        }}
-      >
+      <MantineProvider withGlobalStyles withNormalizeCSS>
         <RouterProvider router={router} />
       </MantineProvider>
     </QueryClientProvider>

@@ -1,3 +1,10 @@
+import { Center } from '@mantine/core';
+import { ReactComponent as IconPerson } from '../assets/images/Person.svg';
+
 export const Empty = () => {
-  return <div>Empty1</div>;
+  return (
+    <Center>
+      <IconPerson />
+    </Center>
+  );
 };

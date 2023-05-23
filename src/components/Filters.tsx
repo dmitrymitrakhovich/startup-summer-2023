@@ -9,14 +9,28 @@ import {
   Text,
 } from '@mantine/core';
 import { CataloguesApi } from '../hooks/catalogues.hooks';
+import {
+  VacanciesResponse,
+  VacanciesSearchParams,
+} from '../types/vacancies.types';
 import { SetURLSearchParams } from 'react-router-dom';
+import { QueryObserverResult } from '@tanstack/react-query';
 
 interface FilterProps {
-  searchParams: URLSearchParams;
+  params: Partial<VacanciesSearchParams>;
+  setParams: React.Dispatch<
+    React.SetStateAction<Partial<VacanciesSearchParams>>
+  >;
   setSearchParams: SetURLSearchParams;
+  refetch: () => Promise<QueryObserverResult<VacanciesResponse, unknown>>;
 }
 
-export const Filters = ({ searchParams }: FilterProps) => {
+export const Filters = ({
+  params,
+  setParams,
+  setSearchParams,
+  refetch,
+}: FilterProps) => {
   const { data, isLoading, isError } = CataloguesApi.useCatalogues();
 
   const cataloguesOptions =
@@ -26,94 +40,112 @@ export const Filters = ({ searchParams }: FilterProps) => {
       label: c.title_trimmed,
     }));
 
+  const setFilters = () => {
+    setSearchParams((searchParams) => {
+      params.catalogues &&
+        searchParams.set('catalogues', String(params.catalogues));
+
+      params.payment_from &&
+        searchParams.set('payment_from', String(params.payment_from));
+
+      params.payment_to &&
+        searchParams.set('payment_to', String(params.payment_to));
+      return searchParams;
+    });
+
+    refetch();
+  };
+
+  const handleFiltersReset = () => {
+    setParams({
+      catalogues: '',
+    });
+
+    setSearchParams((searchParams) => {
+      searchParams.delete('catalogues');
+      searchParams.delete('payment_from');
+      searchParams.delete('payment_to');
+      return searchParams;
+    });
+
+    refetch();
+  };
+
   return (
-    <form>
-      <Card radius='md' padding='md' withBorder>
-        <Flex align='center' justify='space-between'>
-          <Text size='xl' fw='bold'>
-            Фильтры
+    <Card radius='md' padding='md' withBorder>
+      <Flex align='center' justify='space-between'>
+        <Text size='xl' fw='bold'>
+          Фильтры
+        </Text>
+        <Button
+          variant='white'
+          leftIcon
+          color='gray'
+          fw='normal'
+          p={0}
+          onClick={handleFiltersReset}
+        >
+          Сбросить все &#10005;
+        </Button>
+      </Flex>
+
+      <Group mt='xl'>
+        <Group>
+          <Text size='md' fw='bold'>
+            Отрасль
           </Text>
-          <Button
-            variant='white'
-            leftIcon
-            color='gray'
-            fw='normal'
-            p={0}
-            type='reset'
-          >
-            Сбросить все &#10005;
-          </Button>
-        </Flex>
 
-        <Group mt='xl'>
-          <Group>
-            <Text size='md' fw='bold'>
-              Отрасль
-            </Text>
-
-            <Select
-              name='catalogues'
-              defaultValue={searchParams.get('catalogues')}
-              w='100%'
-              size='md'
-              radius='md'
-              placeholder='Выберете отрасль'
-              rightSection={isLoading ? <Loader size='1rem' /> : null}
-              data={cataloguesOptions || []}
-              error={isError ? 'He удалось получить категории' : null}
-              // value={params.catalogues}
-              // onChange={(v) =>
-              //   setParams({ ...params, catalogues: String(v) })
-              // }
-              data-elem='industry-select'
-            />
-          </Group>
-
-          <Group spacing='md' mt='md' mb='md'>
-            <Text size='md' fw='bold'>
-              Оклад
-            </Text>
-            <NumberInput
-              name='payment_from'
-              defaultValue={Number(searchParams.get('payment_from')) || ''}
-              // value={Number(params.payment_from) || ''}
-              // onChange={(v) =>
-              //   setParams({ ...params, payment_from: String(v) })
-              // }
-              size='md'
-              placeholder='От'
-              w='100%'
-              radius='md'
-              min={0}
-              data-elem='salary-from-input'
-            />
-            <NumberInput
-              name='payment_to'
-              // value={Number(params.payment_to) || ''}
-              // onChange={(v) =>
-              //   setParams({ ...params, payment_to: String(v) })
-              // }
-              defaultValue={Number(searchParams.get('payment_to')) || ''}
-              size='md'
-              placeholder='До'
-              w='100%'
-              radius='md'
-              min={0}
-              data-elem='salary-to-input'
-            />
-          </Group>
-
-          <Button
+          <Select
+            w='100%'
             size='md'
-            fullWidth
             radius='md'
-            type='submit'
-            data-elem='search-button'
-          >
-            Применить
-          </Button>
+            placeholder='Выберете отрасль'
+            rightSection={isLoading ? <Loader size='1rem' /> : null}
+            data={cataloguesOptions || []}
+            error={isError ? 'He удалось получить категории' : null}
+            value={params.catalogues}
+            onChange={(v) => setParams({ ...params, catalogues: String(v) })}
+            data-elem='industry-select'
+          />
         </Group>
-      </Card>
-    </form>
+
+        <Group spacing='md' mt='md' mb='md'>
+          <Text size='md' fw='bold'>
+            Оклад
+          </Text>
+          <NumberInput
+            value={Number(params.payment_from) || ''}
+            onChange={(v) => setParams({ ...params, payment_from: String(v) })}
+            size='md'
+            placeholder='От'
+            w='100%'
+            radius='md'
+            min={0}
+            data-elem='salary-from-input'
+          />
+          <NumberInput
+            value={Number(params.payment_to) || ''}
+            onChange={(v) => setParams({ ...params, payment_to: String(v) })}
+            size='md'
+            placeholder='До'
+            w='100%'
+            radius='md'
+            min={0}
+            data-elem='salary-to-input'
+          />
+        </Group>
+
+        <Button
+          size='md'
+          fullWidth
+          radius='md'
+          type='submit'
+          data-elem='search-button'
+          onClick={setFilters}
+        >
+          Применить
+        </Button>
+      </Group>
+    </Card>
   );
 };

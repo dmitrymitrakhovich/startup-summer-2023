@@ -16,8 +16,6 @@ export const FavoriteActionIcon = ({
     (state) => state.favoriteVacanciesIds
   );
 
-  console.log(favoriteVacancies);
-
   const addFavoriteVacancy = useFavoriteVacanciesStore(
     (state) => state.addFavoriteVacancy
   );
