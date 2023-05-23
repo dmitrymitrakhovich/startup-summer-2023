@@ -12,30 +12,36 @@ import { VacancyPage } from './pages/VacancyPage.tsx';
 import { FavoriteVacanciesPage } from './pages/FavoriteVacanciesPage.tsx';
 import { NotFoundPage } from './pages/NotFoundPage.tsx';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <VacanciesPage />,
+        },
+        {
+          path: 'vacancies/:vacancyId',
+          element: <VacancyPage />,
+        },
+        {
+          path: 'favorites',
+          element: <FavoriteVacanciesPage />,
+        },
+      ],
+    },
+    {
+      path: '*',
+      element: <NotFoundPage />,
+    },
+  ],
   {
-    path: '/',
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <VacanciesPage />,
-      },
-      {
-        path: 'vacancies/:vacancyId',
-        element: <VacancyPage />,
-      },
-      {
-        path: 'favorites',
-        element: <FavoriteVacanciesPage />,
-      },
-    ],
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />,
-  },
-]);
+    basename: '/startup-summer-2023',
+  }
+);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
