@@ -16,7 +16,7 @@ interface FilterProps {
   setSearchParams: SetURLSearchParams;
 }
 
-export const Filters = ({ searchParams, setSearchParams }: FilterProps) => {
+export const Filters = ({ searchParams }: FilterProps) => {
   const { data, isLoading, isError } = CataloguesApi.useCatalogues();
 
   const cataloguesOptions =
