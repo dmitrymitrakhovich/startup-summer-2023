@@ -39,7 +39,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: import.meta.env.DEV ? '/' : '/startup-summer-2023',
+    basename: '/startup-summer-2023',
   }
 );
 
