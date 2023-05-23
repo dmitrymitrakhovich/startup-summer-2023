@@ -18,6 +18,4 @@
 
 [Ky](https://github.com/sindresorhus/ky) - Ky is a tiny and elegant HTTP client based on the browser Fetch API
 
-[Vite](https://github.com/vitejs/vite)
-
-Vite is a new breed of frontend build tooling that significantly improves the frontend development experience.
+[Vite](https://github.com/vitejs/vite) - Vite is a new breed of frontend build tooling that significantly improves the frontend development experience.
