@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://dmitrymitrakhovich.github.io/startup-summer-2023",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
