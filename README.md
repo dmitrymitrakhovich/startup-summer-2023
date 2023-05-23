@@ -17,3 +17,7 @@
 [React-router](https://github.com/remix-run/react-router) - React Router is a lightweight, fully-featured routing library for the React JavaScript library
 
 [Ky](https://github.com/sindresorhus/ky) - Ky is a tiny and elegant HTTP client based on the browser Fetch API
+
+[Vite](https://github.com/vitejs/vite)
+
+Vite is a new breed of frontend build tooling that significantly improves the frontend development experience.
