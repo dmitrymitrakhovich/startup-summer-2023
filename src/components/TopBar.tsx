@@ -1,17 +1,18 @@
 import {
-  createStyles,
-  Header,
-  Container,
-  Group,
   Burger,
-  Paper,
-  Transition,
-  rem,
+  Container,
+  createStyles,
   Flex,
+  Group,
+  Header,
+  Paper,
+  rem,
+  Transition,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { ReactComponent as IconLogo } from '../assets/icons/Logo.svg';
 import { Link, NavLink } from 'react-router-dom';
+
+import { ReactComponent as IconLogo } from '../assets/icons/Logo.svg';
 
 const HEADER_HEIGHT = rem(84);
 
@@ -46,12 +47,7 @@ export function TopBar() {
   ));
 
   return (
-    <Header
-      height={HEADER_HEIGHT}
-      mb='md'
-      className={classes.root}
-      withBorder={false}
-    >
+    <Header height={HEADER_HEIGHT} withBorder={false}>
       <Container className={classes.header}>
         <Link to={links[0].link}>
           <Flex justify='center'>
@@ -83,11 +79,6 @@ export function TopBar() {
 }
 
 const useStyles = createStyles((theme) => ({
-  root: {
-    position: 'relative',
-    zIndex: 1,
-  },
-
   dropdown: {
     position: 'absolute',
     top: HEADER_HEIGHT,

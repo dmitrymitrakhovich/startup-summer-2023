@@ -1,6 +1,7 @@
 import { Card, Flex, Group, Text } from '@mantine/core';
-import { FavoriteActionIcon } from '../components/FavoriteActionIcon';
+
 import { ReactComponent as IconLocation } from '../assets/icons/Location.svg';
+import { FavoriteActionIcon } from '../components/FavoriteActionIcon';
 import { VacancyInfo } from '../types/vacancies.types';
 
 interface VacancyDescriptionHeaderProps {

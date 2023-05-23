@@ -8,13 +8,14 @@ import {
   Select,
   Text,
 } from '@mantine/core';
+import { QueryObserverResult } from '@tanstack/react-query';
+import { SetURLSearchParams } from 'react-router-dom';
+
 import { CataloguesApi } from '../hooks/catalogues.hooks';
 import {
   VacanciesResponse,
   VacanciesSearchParams,
 } from '../types/vacancies.types';
-import { SetURLSearchParams } from 'react-router-dom';
-import { QueryObserverResult } from '@tanstack/react-query';
 
 interface FilterProps {
   params: Partial<VacanciesSearchParams>;

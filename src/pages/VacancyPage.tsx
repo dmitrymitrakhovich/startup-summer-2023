@@ -1,11 +1,11 @@
+import { Center, Flex, Loader } from '@mantine/core';
+import { useDocumentTitle } from '@mantine/hooks';
 import { useParams } from 'react-router-dom';
-import { VacanciesApi } from '../hooks/vacancies.hooks';
-import { ServerError } from '../components/ServerError';
-import { Box, Center, Loader } from '@mantine/core';
 
+import { ServerError } from '../components/ServerError';
 import { VacancyDescriptionBody } from '../components/VacancyDescriptionBody';
 import { VacancyDescriptionHeader } from '../components/VacancyDescriptionHeader';
-import { useDocumentTitle } from '@mantine/hooks';
+import { VacanciesApi } from '../hooks/vacancies.hooks';
 
 export const VacancyPage = () => {
   const { vacancyId } = useParams();
@@ -29,7 +29,7 @@ export const VacancyPage = () => {
   }
 
   return (
-    <Box mt='xl' mb='xl'>
+    <Flex gap='md' direction='column'>
       <VacancyDescriptionHeader
         id={data.id}
         paymentFrom={data.payment_from}
@@ -40,6 +40,6 @@ export const VacancyPage = () => {
         isFetching={isFetching}
       />
       <VacancyDescriptionBody info={data.vacancyRichText} />
-    </Box>
+    </Flex>
   );
 };

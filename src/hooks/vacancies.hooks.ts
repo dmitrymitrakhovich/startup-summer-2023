@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+
 import { api } from '../api/apiClient';
-import { VacanciesResponse, VacancyInfo } from '../types/vacancies.types';
 import { useFavoriteVacanciesStore } from '../store/favoriteVacancies';
+import { VacanciesResponse, VacancyInfo } from '../types/vacancies.types';
 
 async function getVacancies(searchParams?: URLSearchParams) {
   const page = searchParams?.get('page') || '1';

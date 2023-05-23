@@ -1,4 +1,5 @@
-import { ActionIcon, Skeleton, createStyles } from '@mantine/core';
+import { ActionIcon, createStyles, Skeleton } from '@mantine/core';
+
 import { ReactComponent as IconStar } from '../assets/icons/Star.svg';
 import { useFavoriteVacanciesStore } from '../store/favoriteVacancies';
 import { VacancyInfo } from '../types/vacancies.types';

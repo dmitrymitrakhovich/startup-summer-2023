@@ -1,15 +1,17 @@
 import { Center, Flex, Grid, Loader } from '@mantine/core';
-import { useSearchParams } from 'react-router-dom';
-import { VacanciesApi } from '../hooks/vacancies.hooks';
-import { ServerError } from '../components/ServerError';
+import { useDocumentTitle } from '@mantine/hooks';
 import { useState } from 'react';
-import { getCurrentParams } from '../utils/helpers';
-import { VacanciesSearchParams } from '../types/vacancies.types';
+import { useSearchParams } from 'react-router-dom';
+
+import { Empty } from '../components/Empty';
 import { Filters } from '../components/Filters';
 import { SearchInput } from '../components/SearchInput';
+import { ServerError } from '../components/ServerError';
 import { VacanciesList } from '../components/VacanciesList';
 import { VacanciesPagination } from '../components/VacanciesPagination';
-import { useDocumentTitle } from '@mantine/hooks';
+import { VacanciesApi } from '../hooks/vacancies.hooks';
+import { VacanciesSearchParams } from '../types/vacancies.types';
+import { getCurrentParams } from '../utils/helpers';
 
 export const VacanciesPage = () => {
   useDocumentTitle('Jobored | Vacancies');
@@ -27,7 +29,7 @@ export const VacanciesPage = () => {
   }
 
   return (
-    <Grid mt='xl' mb='xl'>
+    <Grid>
       <Grid.Col span={4}>
         <Filters
           params={params}
@@ -38,7 +40,7 @@ export const VacanciesPage = () => {
       </Grid.Col>
 
       <Grid.Col span={8}>
-        <Flex direction='column' gap='md'>
+        <Flex direction='column' gap='md' align='stretch' h='100%'>
           <SearchInput
             params={params}
             setParams={setParams}
@@ -51,13 +53,21 @@ export const VacanciesPage = () => {
               <Loader />
             </Center>
           ) : (
-            <VacanciesList data={data} isFetching={isFetching} />
+            <>
+              {!data.objects.length ? (
+                <Empty />
+              ) : (
+                <>
+                  <VacanciesList data={data} isFetching={isFetching} />
+                  <VacanciesPagination
+                    searchParams={searchParams}
+                    setSearchParams={setSearchParams}
+                    total={!isLoading && data ? data?.total / 4 : 1}
+                  />
+                </>
+              )}
+            </>
           )}
-          <VacanciesPagination
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-            total={!isLoading && data ? data?.total / 4 : 1}
-          />
         </Flex>
       </Grid.Col>
     </Grid>

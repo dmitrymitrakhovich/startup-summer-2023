@@ -1,5 +1,6 @@
 import { Center, Pagination } from '@mantine/core';
 import { SetURLSearchParams } from 'react-router-dom';
+
 import { VacanciesResponse } from '../types/vacancies.types';
 
 interface VacanciesPaginationProps {

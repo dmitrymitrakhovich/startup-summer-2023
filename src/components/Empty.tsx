@@ -1,10 +1,13 @@
-import { Center } from '@mantine/core';
+import { Flex, Text, Title } from '@mantine/core';
+
 import { ReactComponent as IconPerson } from '../assets/images/Person.svg';
 
 export const Empty = () => {
   return (
-    <Center>
+    <Flex direction='column' justify='center' align='center'>
       <IconPerson />
-    </Center>
+      <Title>Упс, ничего не найдено!</Title>
+      <Text>Попробуйте поискать другие вакансии</Text>
+    </Flex>
   );
 };

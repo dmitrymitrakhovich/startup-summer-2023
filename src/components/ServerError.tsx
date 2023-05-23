@@ -1,4 +1,4 @@
-import { createStyles, Title, Container, rem, Text } from '@mantine/core';
+import { Container, createStyles, rem, Text, Title } from '@mantine/core';
 
 export function ServerError() {
   const { classes } = useStyles();

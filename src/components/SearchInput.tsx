@@ -1,11 +1,12 @@
 import { Button, TextInput } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
+import { QueryObserverResult } from '@tanstack/react-query';
+import { SetURLSearchParams } from 'react-router-dom';
+
 import {
   VacanciesResponse,
   VacanciesSearchParams,
 } from '../types/vacancies.types';
-import { SetURLSearchParams } from 'react-router-dom';
-import { QueryObserverResult } from '@tanstack/react-query';
 
 interface SearchInputProps {
   params: Partial<VacanciesSearchParams>;

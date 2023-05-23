@@ -1,4 +1,5 @@
 import { Paper } from '@mantine/core';
+
 import { VacancyInfo } from '../types/vacancies.types';
 import { createMarkup } from '../utils/helpers';
 

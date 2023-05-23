@@ -1,15 +1,16 @@
 import {
-  createStyles,
-  Container,
-  Title,
-  Text,
   Button,
-  SimpleGrid,
+  Container,
+  createStyles,
   rem,
+  SimpleGrid,
+  Text,
+  Title,
 } from '@mantine/core';
-import { ReactComponent as Image404 } from '../assets/images/404.svg';
-import { Link } from 'react-router-dom';
 import { useDocumentTitle } from '@mantine/hooks';
+import { Link } from 'react-router-dom';
+
+import { ReactComponent as Image404 } from '../assets/images/404.svg';
 
 export function NotFoundPage() {
   useDocumentTitle('Jobored | Not Found');

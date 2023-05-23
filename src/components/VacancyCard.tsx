@@ -1,8 +1,9 @@
-import { Card, Flex, Group, Skeleton, Text, createStyles } from '@mantine/core';
-import { FavoriteActionIcon } from './FavoriteActionIcon';
+import { Card, createStyles, Flex, Group, Skeleton, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { VacancyInfo } from '../types/vacancies.types';
+
 import { ReactComponent as IconLocation } from '../assets/icons/Location.svg';
+import { VacancyInfo } from '../types/vacancies.types';
+import { FavoriteActionIcon } from './FavoriteActionIcon';
 
 interface VacancyCardProps {
   id: VacancyInfo['id'];
@@ -42,7 +43,7 @@ export const VacancyCard = ({
             component={Link}
             to={`/vacancies/${id}`}
           >
-            <Skeleton visible={isFetching} width={500}>
+            <Skeleton visible={isFetching} maw={500}>
               <p className={classes.title}>{profession}</p>
             </Skeleton>
           </Text>
@@ -68,7 +69,7 @@ export const VacancyCard = ({
 
         <Group>
           <IconLocation />
-          <Skeleton visible={isFetching} width={300}>
+          <Skeleton visible={isFetching} maw={300}>
             {townName}
           </Skeleton>
         </Group>

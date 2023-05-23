@@ -1,12 +1,13 @@
 import { Button, Center, Flex, Loader, Title } from '@mantine/core';
-import { VacanciesApi } from '../hooks/vacancies.hooks';
+import { useDocumentTitle } from '@mantine/hooks';
+import { Link, useSearchParams } from 'react-router-dom';
+
+import { ReactComponent as IconPerson } from '../assets/images/Person.svg';
 import { ServerError } from '../components/ServerError';
 import { VacanciesList } from '../components/VacanciesList';
 import { VacanciesPagination } from '../components/VacanciesPagination';
-import { Link, useSearchParams } from 'react-router-dom';
+import { VacanciesApi } from '../hooks/vacancies.hooks';
 import { useFavoriteVacanciesStore } from '../store/favoriteVacancies';
-import { Empty } from '../components/Empty';
-import { useDocumentTitle } from '@mantine/hooks';
 
 export const FavoriteVacanciesPage = () => {
   useDocumentTitle('Jobored | Favorites');
@@ -22,8 +23,8 @@ export const FavoriteVacanciesPage = () => {
 
   if (!favoriteVacancies.length) {
     return (
-      <Flex h='100%' direction='column' align='center'>
-        <Empty />
+      <Flex direction='column' align='center' gap='md'>
+        <IconPerson />
         <Title>Упс, здесь еще ничего нет!</Title>
         <Button variant='light' size='lg' component={Link} to='/'>
           Поиск Вакансий
@@ -45,7 +46,7 @@ export const FavoriteVacanciesPage = () => {
   }
 
   return (
-    <Flex mt='xl' mb='xl' direction='column' gap='md'>
+    <Flex h='100%' direction='column' align='stretch' gap='md'>
       <VacanciesList data={data} isFetching={isFetching} />
       <VacanciesPagination
         total={Math.ceil(data.total / 4)}
