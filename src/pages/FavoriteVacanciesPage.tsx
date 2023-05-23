@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Loader, Title } from '@mantine/core';
+import { Button, Center, Flex, Loader, Title } from '@mantine/core';
 import { VacanciesApi } from '../hooks/vacancies.hooks';
 import { ServerError } from '../components/ServerError';
 import { VacanciesList } from '../components/VacanciesList';
