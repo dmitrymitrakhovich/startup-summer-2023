@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { TopBar } from '../components/TopBar';
-import { Container, Flex, createStyles } from '@mantine/core';
+import { Container, createStyles } from '@mantine/core';
 
 export const Layout = () => {
   const { classes } = useStyles();
@@ -9,9 +9,7 @@ export const Layout = () => {
     <div className={classes.main}>
       <TopBar />
       <Container>
-        <Flex justify='center' align='center'>
-          <Outlet />
-        </Flex>
+        <Outlet />
       </Container>
     </div>
   );
