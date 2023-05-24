@@ -1,4 +1,4 @@
-import { Center, Flex, Grid, Loader } from '@mantine/core';
+import { Flex, Grid, Loader } from '@mantine/core';
 import { useDocumentTitle } from '@mantine/hooks';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
