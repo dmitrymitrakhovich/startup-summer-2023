@@ -1,4 +1,4 @@
-import { Center, Flex, Loader } from '@mantine/core';
+import { Flex, Loader } from '@mantine/core';
 import { useDocumentTitle } from '@mantine/hooks';
 import { useParams } from 'react-router-dom';
 
@@ -18,14 +18,18 @@ export const VacancyPage = () => {
 
   if (isLoading) {
     return (
-      <Center h='100%' mx='auto'>
+      <Flex mih='70vh' align='center' justify='center'>
         <Loader />
-      </Center>
+      </Flex>
     );
   }
 
   if (isError) {
-    return <ServerError />;
+    return (
+      <Flex mih='70vh' align='center' justify='center'>
+        <ServerError />
+      </Flex>
+    );
   }
 
   return (

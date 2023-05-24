@@ -1,4 +1,4 @@
-import { Button, Center, Flex, Loader, Title } from '@mantine/core';
+import { Button, Flex, Loader, Title } from '@mantine/core';
 import { useDocumentTitle } from '@mantine/hooks';
 import { Link, useSearchParams } from 'react-router-dom';
 
@@ -35,9 +35,9 @@ export const FavoriteVacanciesPage = () => {
 
   if (isLoading) {
     return (
-      <Center h='100%' mx='auto'>
+      <Flex mih='70vh' align='center' justify='center'>
         <Loader />
-      </Center>
+      </Flex>
     );
   }
 

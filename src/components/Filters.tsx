@@ -60,12 +60,14 @@ export const Filters = ({
   const handleFiltersReset = () => {
     setParams({
       catalogues: '',
+      keyword: '',
     });
 
     setSearchParams((searchParams) => {
       searchParams.delete('catalogues');
       searchParams.delete('payment_from');
       searchParams.delete('payment_to');
+      searchParams.delete('keyword');
       return searchParams;
     });
 
@@ -80,7 +82,6 @@ export const Filters = ({
         </Text>
         <Button
           variant='white'
-          leftIcon
           color='gray'
           fw='normal'
           p={0}
@@ -122,6 +123,11 @@ export const Filters = ({
             w='100%'
             radius='md'
             min={0}
+            styles={{
+              control: {
+                border: 'none',
+              },
+            }}
             data-elem='salary-from-input'
           />
           <NumberInput
@@ -132,6 +138,11 @@ export const Filters = ({
             w='100%'
             radius='md'
             min={0}
+            styles={{
+              control: {
+                border: 'none',
+              },
+            }}
             data-elem='salary-to-input'
           />
         </Group>

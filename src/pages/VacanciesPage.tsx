@@ -29,7 +29,7 @@ export const VacanciesPage = () => {
   }
 
   return (
-    <Grid>
+    <Grid grow>
       <Grid.Col span={4}>
         <Filters
           params={params}
@@ -49,9 +49,9 @@ export const VacanciesPage = () => {
           />
 
           {isLoading ? (
-            <Center h='100%' mx='auto'>
+            <Flex mih='70vh' align='center' justify='center'>
               <Loader />
-            </Center>
+            </Flex>
           ) : (
             <>
               {!data.objects.length ? (
