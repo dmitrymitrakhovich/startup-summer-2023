@@ -24,7 +24,7 @@ export const VacanciesPagination = ({
             return searchParams;
           });
         }}
-        total={total}
+        total={total < 125 ? total : 125}
       />
     </Center>
   );
